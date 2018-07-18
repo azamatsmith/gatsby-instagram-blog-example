@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-Create a `.env` file in the root of your project that looks like this
+Create an `.env` file in the root of your project that looks like this
 
 ```
 // .env
