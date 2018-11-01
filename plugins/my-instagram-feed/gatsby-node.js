@@ -10,8 +10,8 @@ const API_URI = `https://api.instagram.com/v1/users/self/media/recent/?access_to
   process.env.ACCESS_TOKEN
 }`
 
-exports.sourceNodes = async ({ boundActionCreators, store, cache }) => {
-  const { createNode, createNodeField } = boundActionCreators
+exports.sourceNodes = async ({ actions, store, cache, createNodeId }) => {
+  const { createNode, createNodeField } = actions
   // Fetch data
   const { data } = await axios.get(API_URI)
 
@@ -26,6 +26,7 @@ exports.sourceNodes = async ({ boundActionCreators, store, cache }) => {
         cache,
         store,
         createNode,
+        createNodeId,
       })
       // TODO: add additional fields
       await createNodeField({

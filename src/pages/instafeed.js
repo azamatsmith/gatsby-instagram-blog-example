@@ -1,19 +1,12 @@
 import React from 'react'
 import GatsbyImage from 'gatsby-image'
+import { graphql } from "gatsby"
+import Layout from '../components/layout';
 
-export default class InstaFeed extends React.Component {
-  _renderImages = () => {
-    const { images } = this.props.data
-    return images.edges.map(image => (
-      <div style={{ margin: 16 }} key={image.node.id}>
-        <GatsbyImage resolutions={image.node.childImageSharp.resolutions} />
-      </div>
-    ))
-  }
+const InstaFeed = ({data}) => (
 
-  render() {
-    return (
-      <div
+  <Layout>
+    <div
         className="InstaFeed"
         style={{
           alignItems: 'center',
@@ -24,11 +17,20 @@ export default class InstaFeed extends React.Component {
           marginTop: 40,
         }}
       >
-        {this._renderImages()}
+      {data.images.edges.map(({ node }) => (
+        <div style={{ margin: 16 }} key={node.id}>
+          <GatsbyImage resolutions={node.childImageSharp.resolutions} />
+        </div>
+      ))}
       </div>
-    )
-  }
-}
+  </Layout>
+)
+
+
+
+
+
+
 
 export const query = graphql`
   query MyInstaFeed {
@@ -54,3 +56,4 @@ export const query = graphql`
     }
   }
 `
+export default InstaFeed

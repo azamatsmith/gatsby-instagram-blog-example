@@ -1,10 +1,14 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import {Link} from 'gatsby'
+import Layout from '../components/layout';
 
 const IndexPage = () => (
-  <div>
-    <Link to="/Instafeed">Instagram Feed</Link>
-  </div>
+  <Layout>
+    <div>
+      <Link to="/instafeed">Instagram Feed</Link>
+    </div>
+  </Layout>
+  
 )
 
 export default IndexPage
